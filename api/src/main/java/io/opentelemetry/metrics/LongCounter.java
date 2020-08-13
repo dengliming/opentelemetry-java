@@ -64,6 +64,10 @@ public interface LongCounter extends SynchronousInstrument<BoundLongCounter> {
    */
   void add(long increment, Labels labels);
 
+  default void add(long increment) {
+    add(increment, Labels.empty());
+  }
+
   @Override
   BoundLongCounter bind(Labels labels);
 

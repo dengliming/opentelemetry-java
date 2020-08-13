@@ -64,6 +64,10 @@ public interface DoubleCounter extends SynchronousInstrument<BoundDoubleCounter>
    */
   void add(double increment, Labels labels);
 
+  default void add(double increment) {
+    add(increment, Labels.empty());
+  }
+
   @Override
   BoundDoubleCounter bind(Labels labels);
 

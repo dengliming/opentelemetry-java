@@ -76,6 +76,10 @@ public interface LongValueRecorder extends SynchronousInstrument<BoundLongValueR
    */
   void record(long value, Labels labels);
 
+  default void record(long value) {
+    record(value, Labels.empty());
+  }
+
   @Override
   BoundLongValueRecorder bind(Labels labels);
 

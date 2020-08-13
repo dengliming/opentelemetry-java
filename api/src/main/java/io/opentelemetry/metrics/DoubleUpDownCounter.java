@@ -67,6 +67,10 @@ public interface DoubleUpDownCounter extends SynchronousInstrument<BoundDoubleUp
    */
   void add(double increment, Labels labels);
 
+  default void add(double increment) {
+    add(increment, Labels.empty());
+  }
+
   @Override
   BoundDoubleUpDownCounter bind(Labels labels);
 
