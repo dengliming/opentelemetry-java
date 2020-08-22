@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.google.protobuf.ByteString;
 import io.opentelemetry.proto.trace.v1.ConstantSampler;
 import io.opentelemetry.proto.trace.v1.ConstantSampler.ConstantDecision;
-import io.opentelemetry.proto.trace.v1.ProbabilitySampler;
+import io.opentelemetry.proto.trace.v1.TraceIdRatioBasedSampler;
 import io.opentelemetry.sdk.trace.Samplers;
 import io.opentelemetry.sdk.trace.config.TraceConfig;
 import io.opentelemetry.trace.SpanId;
@@ -87,12 +87,12 @@ class TraceProtoUtilsTest {
   }
 
   @Test
-  void traceConfigFromProto_ProbabilitySampler() {
+  void traceConfigFromProto_TraceIdRatioBasedSampler() {
     TraceConfig traceConfig =
         TraceProtoUtils.traceConfigFromProto(
             io.opentelemetry.proto.trace.v1.TraceConfig.newBuilder()
-                .setProbabilitySampler(
-                    ProbabilitySampler.newBuilder().setSamplingProbability(0.1).build())
+                .setTraceIdRatioBasedSampler(
+                    TraceIdRatioBasedSampler.newBuilder().setSamplingRatio(0.1).build())
                 .setMaxNumberOfAttributes(10)
                 .setMaxNumberOfTimedEvents(9)
                 .setMaxNumberOfLinks(8)
